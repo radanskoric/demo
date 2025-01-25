@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Check if name parameter is provided
+if [ -z "$1" ]; then
+    echo "Error: Please provide an engine name"
+    echo "Usage: $0 <engine_name>"
+    exit 1
+fi
+
+ENGINE_NAME="$1"
+TARGET_DIR="demos/$ENGINE_NAME"
+
+# Create demos directory if it doesn't exist
+mkdir -p demos
+
+# Generate the Rails engine
+rails plugin new "$TARGET_DIR" --mountable --skip-javascript=false --skip-git --skip-docker --skip-ci --skip-system-test --skip-kamal --skip-rubocop --skip-brakeman --skip-solid
+
+if [ $? -eq 0 ]; then
+    # Add mount line to routes.rb
+    MOUNT_LINE="  mount ${ENGINE_NAME^}::Engine => '/$ENGINE_NAME'"
+    sed -i "/^end/i\\$MOUNT_LINE" config/routes.rb
+
+    bundle
+
+    echo "Successfully created a new demo skeleton as a Rails engine in $TARGET_DIR:"
+    echo "  1. Created the new engine."
+    echo "  2. Required it in Gemfile."
+    echo "  3. Added mount line to config/routes.rb."
+    echo "Inspect git diff for details of all changes."
+else
+    echo "Error: Failed to create Rails engine"
+    exit 1
+fi

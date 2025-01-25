@@ -1,24 +1,15 @@
-# README
+# Radan's Demos application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An application that houses my demos.
 
-Things you may want to cover:
+## Usage
 
-* Ruby version
+It comes with a devcontainer. Use it.
 
-* System dependencies
+### Creating new demo skeletons
 
-* Configuration
+`bin/new_demo demo_name`
 
-* Database creation
+## Contributing
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Unless you really really want to, probably best not to. It's just for me to have a place to put some demos.
