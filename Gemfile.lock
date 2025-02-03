@@ -1,3 +1,9 @@
+PATH
+  remote: demos/morphing
+  specs:
+    morphing (0.1.0)
+      rails (>= 8.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -364,6 +370,7 @@ DEPENDENCIES
   debug
   importmap-rails
   kamal
+  morphing!
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
