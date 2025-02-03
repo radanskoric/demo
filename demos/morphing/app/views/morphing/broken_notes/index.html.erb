@@ -1,0 +1,48 @@
+<div class="max-w-3xl mx-auto p-6">
+  <h1 class="text-2xl font-bold mb-6">Broken Notes Example</h1>
+
+  <div class="mb-8">
+    This is a form demonstrating a page that's broken when it gets morphed.
+    When you submit a form to create a new note, this page will be updated with morphing.
+  </div>
+
+  <div class="mb-8">
+    First we have an info box that can be open or closed.
+
+    <details data-controller="info" data-action="toggle->info#persist" data-info-url-value="<%=  set_info_box_preference_notes_path %>" open>
+      Its open by default. Since we don't persist the change, if we close it and
+      the page is morphed it will revert to the default open state.
+    </details>
+  </div>
+
+  <div class="mb-8">
+    Next, we have a form for creating a new note which uses a rich JS component,
+    trix editor. When the page is morphed it will simply break.
+
+    <%= render "form" %>
+  </div>
+
+  <div class="space-y-4">
+    Then we have a list of notes whose content can be open or closed. By default
+    they are closed. If we open them, they will revert to the default closed state
+    when the page is morphed.
+
+    <% session_notes.each do |note| %>
+      <div class="p-4 bg-white rounded-lg shadow">
+        <%= note.title %>
+        <details>
+          <%= note.content.html_safe %>
+        </details>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-8">
+    Finally, we have a component which is counting clicks user made since the page
+    was first open (I ran out of sensible examples). Since it's not doing anything
+    to react to page being morphed, it will be partially broken and reset the counter
+    when the page is morphed.
+
+    <div data-controller="broken-click-counter" data-broken-click-counter-count-value="0"></div>
+  </div>
+</div>

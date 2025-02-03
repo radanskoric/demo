@@ -1,4 +1,5 @@
 module Morphing
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ::ApplicationController
+    layout 'morphing/application'
   end
 end

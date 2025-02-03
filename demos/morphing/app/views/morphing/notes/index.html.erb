@@ -1,0 +1,50 @@
+<div class="max-w-3xl mx-auto p-6">
+  <h1 class="text-2xl font-bold mb-6">Working Notes Example</h1>
+
+  <div class="mb-8">
+    This is a form demonstrating several techniques for avoiding issues with morping.
+    When you submit a form to create a new note, this page will be updated with morphing.
+  </div>
+
+  <div class="mb-8">
+    First we have an info box that can be open or closed.
+
+    <details data-controller="info" data-action="toggle->info#persist" data-info-url-value="<%=  set_info_box_preference_notes_path %>" <%= "open" unless session[:hide_info] %>>
+      Its open/closed state is stored server side. In this demo we are storing
+      it in the session to keep it simple but in reality it could be stored in
+      a user preferences record, for example.
+    </details>
+  </div>
+
+  <div class="mb-8">
+    Next, we have a form for creating a new note which uses a rich JS component,
+    trix editor. It's too complex to do something clever so it's easiest to just
+    exclude it using data-turbo-permanet.
+
+    <%= render "form" %>
+  </div>
+
+  <div class="space-y-4">
+    Then we have a list of notes whose content can be open or closed. Their state
+    is stored in the URL. There's a Stimulus controller attached which modifies a
+    comma separated list of notes that are open. Since form submission redirects
+    back after creating a new note, the URL modifications are preserved.
+
+    <% session_notes.each do |note| %>
+      <div class="p-4 bg-white rounded-lg shadow">
+        <%= note.title %>
+        <details data-controller="details" data-action="toggle->details#toggle" data-details-id-value="<%= note.id %>" <%= "open" if @open_ids.include?(note.id) %>>
+          <%= note.content.html_safe %>
+        </details>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-8">
+    Finally, we have a component which is counting clicks user made since the page
+    was first open (I ran out of sensible examples). It continues counting across
+    page refreshes by listening to turbo:before-morph-element and preventing it.
+
+    <div data-controller="click-counter" data-click-counter-count-value="0"></div>
+  </div>
+</div>

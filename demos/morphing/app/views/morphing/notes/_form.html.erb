@@ -1,0 +1,18 @@
+<%= form_with(url: notes_path, class: "space-y-4", data: {controller: "form"}) do |f| %>
+  <div>
+    <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_field :title, class: "mt-1 block w-full rounded-md border p-2 border-gray-700 focus:border-indigo-500 focus:ring-indigo-500" %>
+  </div>
+
+  <div data-turbo-permanent>
+    <%= f.label :content, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.rich_text_area :content,
+        class: "mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500",
+        placeholder: "Write your note here..." %>
+  </div>
+
+  <div>
+    <%= f.submit "Save Note",
+        class: "inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+  </div>
+<% end %>

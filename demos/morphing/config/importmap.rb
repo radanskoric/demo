@@ -1,0 +1,7 @@
+pin "morphing/application"
+pin "@hotwired/stimulus", to: "stimulus.min.js"
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
+pin "@rails/request.js", to: "requestjs.js"
+pin_all_from "demos/morphing/app/javascript/morphing/controllers", under: "morphing/controllers"
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"

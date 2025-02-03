@@ -1,0 +1,35 @@
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+  <div class="mb-8">
+    <%= link_to "← Back to main", "/", class: "text-gray-600 hover:text-gray-800 text-sm" %>
+  </div>
+
+  <h1 class="text-4xl text-center font-bold mb-4 text-gray-900">Morphing Problems</h1>
+
+  <p class="text-gray-600 text-lg mb-8">
+    Explore examples of Turbo Frames morphing behavior and learn how to properly implement morphing in your Rails application.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <%= link_to broken_notes_path, class: "transform hover:scale-105 transition-transform duration-200" do %>
+      <div class="bg-white rounded-lg shadow-lg p-6 h-full border border-gray-200">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Broken Example</h2>
+        <p class="text-gray-600">Example of a page that has multiple features broken when it gets morphed.</p>
+      </div>
+    <% end %>
+
+    <%= link_to notes_path, class: "transform hover:scale-105 transition-transform duration-200" do %>
+      <div class="bg-white rounded-lg shadow-lg p-6 h-full border border-gray-200">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Working Example</h2>
+        <p class="text-gray-600">The same page except all the issues have been fixed so that the page works as expected when it gets morphed. Multiple different techniques are used on the same page.</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :styles do %>
+<style>
+  body {
+    background-color: #f8fafc;
+  }
+</style>
+<% end %>

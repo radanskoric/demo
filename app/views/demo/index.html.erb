@@ -1,4 +1,25 @@
-<div>
-  <h1 class="font-bold text-4xl">Demo#index</h1>
-  <p>Find me in app/views/demo/index.html.erb</p>
+<div class="text-center mb-12">
+  <h1 class="text-4xl font-bold text-gray-900 mb-4">Radan's Demos</h1>
 </div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+  <% @demos.each do |demo| %>
+    <%= link_to demo[:link], class: "block group" do %>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full border border-gray-100">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+            <%= demo[:title] %>
+          </h3>
+          <p class="text-gray-600">
+            <%= demo[:description] %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<footer class="text-center text-gray-600 pb-8">
+  <p>Created by <%= link_to "Radan Skorić", "https://radanskoric.com" %></p>
+</footer>
+
