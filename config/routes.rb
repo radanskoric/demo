@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  constraints host: "radan.dev" do
+    match "(*path)" => redirect { |params, req|
+      path = params[:path]
+      query = req.query_string.present? ? "?#{req.query_string}" : ""
+      "https://radanskoric.com/#{path}#{query}"
+    }, via: :all
+  end
+
   root to: "demo#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
