@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  a {
+    @apply text-indigo-600 transition-colors duration-200;
+  }
+  a:hover {
+    @apply text-indigo-700;
+  }
+}
+
 /*
 
 @layer components {
