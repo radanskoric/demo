@@ -1,28 +1,7 @@
-# Morphing
-Short description and motivation.
+# Morphing problems demo
 
-## Usage
-How to use my plugin.
-
-## Installation
-Add this line to your application's Gemfile:
-
-```ruby
-gem "morphing"
-```
-
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install morphing
-```
-
-## Contributing
-Contribution directions go here.
+This is the source code of the [Morphing Problems](https://demo.radan.dev/morphing) demo
+which accompanies the ["How to avoid problems with Turbo morphing"](https://radan.dev/articles/how-to-avoid-problem-with-turbo-morphing) article on my blog.
 
 ## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The code in the demo inherits the repository license, the MIT license.
