@@ -1,4 +1,10 @@
 PATH
+  remote: demos/bundling
+  specs:
+    bundling (0.1.0)
+      rails (>= 8.0.1)
+
+PATH
   remote: demos/morphing
   specs:
     morphing (0.1.0)
@@ -389,6 +395,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  bundling!
   capybara
   debug
   dockerfile-rails (>= 1.7)

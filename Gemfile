@@ -64,6 +64,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "morphing", path: "demos/morphing"
-
 gem "dockerfile-rails", ">= 1.7", :group => :development
+
+gem "morphing", path: "demos/morphing"
+gem "bundling", path: "demos/bundling"
