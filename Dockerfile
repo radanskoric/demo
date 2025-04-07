@@ -40,6 +40,9 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
+# Install bun
+RUN curl -fsSL https://bun.sh/install | bash
+
 # Copy application code
 COPY . .
 

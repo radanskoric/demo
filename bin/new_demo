@@ -23,10 +23,22 @@ if [ $? -eq 0 ]; then
 
     bundle
 
+    # Do some work inside the engine
+    cd "$TARGET_DIR"
+    # Create home page of the new engine
+    rails generate controller home show
+    # Change the routes to make it the engine's root
+    sed -i 's|get "home/show"|root to:"home#show"|' config/routes.rb
+    # We don't need the dummy app
+    rm -rf test/dummy
+    # Go back to the root directory
+    cd ../..
+
     echo "Successfully created a new demo skeleton as a Rails engine in $TARGET_DIR:"
     echo "  1. Created the new engine."
     echo "  2. Required it in Gemfile."
     echo "  3. Added mount line to config/routes.rb."
+    echo "  4. Created and linked a home page for the new engine."
     echo "Inspect git diff for details of all changes."
 else
     echo "Error: Failed to create Rails engine"

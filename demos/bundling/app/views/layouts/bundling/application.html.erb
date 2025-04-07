@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bundling</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <%= render "layouts/head_common", title: "Bundling" %>
+
+  <%= render "layouts/main_stylesheets" %>
+  <%= stylesheet_link_tag "bundling/application", media: "all" %>
+  <%= stylesheet_link_tag "tom-select.css" %>
+  <%= javascript_importmap_tags "bundling/application", importmap: Bundling.importmap %>
 
   <%= yield :head %>
-
-  <%= stylesheet_link_tag    "bundling/application", media: "all" %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <%= yield %>
+  </div>
 </body>
+
 </html>
