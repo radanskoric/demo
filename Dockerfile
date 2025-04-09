@@ -31,7 +31,11 @@ FROM base AS build
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
+    apt-get install unzip && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Install bun
+RUN curl -fsSL https://bun.sh/install | bash
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -39,9 +43,6 @@ COPY demos demos
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
-
-# Install bun
-RUN curl -fsSL https://bun.sh/install | bash
 
 # Copy application code
 COPY . .
