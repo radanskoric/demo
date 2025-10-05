@@ -15,7 +15,7 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
+gem "tailwindcss-rails", "~> 4"
 
 gem "jsbundling-rails"
 gem "requestjs-rails"
@@ -65,7 +65,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "dockerfile-rails", ">= 1.7", :group => :development
+gem "dockerfile-rails", ">= 1.7", group: :development
 
 gem "morphing", path: "demos/morphing"
 gem "bundling", path: "demos/bundling"

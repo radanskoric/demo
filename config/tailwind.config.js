@@ -1,4 +1,6 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+// Tailwind CSS v4 configuration
+// Theme customization is now done in CSS using @theme directive
+// See app/assets/tailwind/application.css
 
 module.exports = {
   content: [
@@ -7,17 +9,5 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
     './demos/*/app/views/**/*.{erb,haml,html,slim}'
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-      },
-    },
-  },
-  plugins: [
-    // require('@tailwindcss/forms'),
-    // require('@tailwindcss/typography'),
-    // require('@tailwindcss/container-queries'),
   ]
 }

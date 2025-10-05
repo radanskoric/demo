@@ -1,3 +1,3 @@
 Bundling::Engine.routes.draw do
-  root to:"home#show"
+  root to: "home#show"
 end

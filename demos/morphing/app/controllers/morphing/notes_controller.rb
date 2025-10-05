@@ -25,7 +25,7 @@ module Morphing
 
     def set_initial_notes
       if session[:notes].blank?
-        session[:notes] = [{title: "Sample Note", content: "This is a sample note", id: 1}]
+        session[:notes] = [ { title: "Sample Note", content: "This is a sample note", id: 1 } ]
       end
     end
 
