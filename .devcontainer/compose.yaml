@@ -7,22 +7,19 @@ services:
       dockerfile: .devcontainer/Dockerfile
 
     volumes:
-    - ../..:/workspaces:cached
-
-    # Overrides default command so things don't shut down after the process ends.
+      - ../..:/workspaces:cached
+      # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 
     # Uncomment the next line to use a non-root user for all processes.
     # user: vscode
 
     ports:
-    - "3000:3000"
+      - "3010:3000"
 
     depends_on:
-    - selenium
+      - selenium
 
   selenium:
     image: selenium/standalone-chromium
     restart: unless-stopped
-
-
