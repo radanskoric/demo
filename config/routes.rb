@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  constraints host: "radanskoric.com" do
-    match "(*path)" => redirect { |params, req|
-      path = params[:path]
-      query = req.query_string.present? ? "?#{req.query_string}" : ""
-      "https://radan.dev/#{path}#{query}"
-    }, via: :all
+  %w[radanskoric.com www.radanskoric.com].each do |host|
+    constraints host: host do
+      match "(*path)" => redirect { |params, req|
+        path = params[:path]
+        query = req.query_string.present? ? "?#{req.query_string}" : ""
+        "https://radan.dev/#{path}#{query}"
+      }, via: :all
+    end
   end
 
   root to: "demo#index"
